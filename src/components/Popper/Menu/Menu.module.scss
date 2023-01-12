@@ -2,7 +2,7 @@
 .menu-list {
     width: 228px;
 
-    //Menu item 
+
     .menu-item {
         margin-left: 0;
 
@@ -13,12 +13,17 @@
     padding-bottom: 8px;
 }
 
+//Menu Item
 .menu-item {
     width          : 100%;
     justify-content: flex-start;
     border-radius  : 0;
     padding        : 11px 16px;
     line-height    : 1.8rem;
+
+    &.separate {
+        border-top: 1px solid rgba(22, 24, 35, .12);
+    }
 
 
     &:hover {
