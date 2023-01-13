@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './Image.module.scss';
 import classNames from 'classnames/bind';
 import { forwardRef, useState } from 'react';
@@ -12,5 +13,12 @@ const Image = forwardRef(({ src, alt, className, fallback: customFallback = imag
     const classes = cx('wrapper', { [className]: className });
     return <img className={classes} ref={ref} {...props} alt={alt} src={fallback || src} onError={handleError} />;
 });
+
+Image.propTypes = {
+    src: PropTypes.string,
+    alt: PropTypes.string,
+    className: PropTypes.string,
+    fallback: PropTypes.string,
+};
 
 export default Image;
