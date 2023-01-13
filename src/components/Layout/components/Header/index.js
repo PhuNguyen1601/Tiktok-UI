@@ -6,11 +6,11 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faCloudUpload,
     faUser,
     faCoins,
     faGear,
     faSignOut,
+    faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
@@ -24,7 +24,8 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-
+import { MessageIcon, InboxIcon } from '~/components/Icons';
+import Image from '~/components/Images';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -136,9 +137,17 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                            <Button className={cx('action-btn')} outlineBlack leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                                Upload
+                            </Button>
+                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -150,7 +159,7 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://p19-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/07361c931ecb42fd7882e0f5832088f3~c5_100x100.jpeg?x-expires=1673712000&x-signature=aaKDiBny4uVabYSHJP%2F9voD1rYc%3D"
                                 alt="User"
